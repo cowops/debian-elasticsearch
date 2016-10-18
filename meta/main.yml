@@ -15,4 +15,6 @@ galaxy_info:
     - wheezy
   galaxy_tags:
   - database
-dependencies: []
+dependencies: [
+    - cowops.debian-java
+]
