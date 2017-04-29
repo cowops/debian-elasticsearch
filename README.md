@@ -23,7 +23,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: loranger.debian-elasticsearch, elasticsearch_version: 1.0 }
+         - { role: cowops.debian-elasticsearch, elasticsearch_version: 1.0 }
 
 Tasks
 -----
