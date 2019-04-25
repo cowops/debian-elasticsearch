@@ -1,6 +1,10 @@
 ---
 - name: ensure apt handles https
-  apt: pkg=apt-transport-https state=latest update_cache=yes force=yes
+  apt:
+    name: ['apt-transport-https']
+    state: latest
+    update_cache: yes
+    force: yes
 
 - name: install elasticsearch gpg key
   apt_key: url=https://artifacts.elastic.co/GPG-KEY-elasticsearch state=present
@@ -9,7 +13,12 @@
   apt_repository: repo='deb https://artifacts.elastic.co/packages/{{ elasticsearch_version }}/apt stable main' state=present
 
 - name: install elasticsearch packages
-  apt: pkg={{ item }} state=latest update_cache=yes force=yes
-  with_items:
+  apt:
+    name: {{ packages }}
+    state: latest
+    update_cache: yes
+    force: yes
+  vars:
+    packages:
       - elasticsearch
   notify: restart elasticsearch
